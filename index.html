@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOD – Movement Companion</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <div class="app-container">
+    <header>
+      <h1>NOD</h1>
+      <p class="subtitle">A gentle, context-aware movement companion</p>
+    </header>
+
+    <hr>
+
+    <!-- Daily Check-In Section -->
+    <section id="checkin-section" class="card">
+      <h2>Daily Check-In</h2>
+      <p class="section-desc">Take a brief moment to log your current state.</p>
+      
+      <div class="input-group">
+        <label>Sleep Quality</label>
+        <div class="radio-options">
+          <label><input type="radio" name="sleep" value="3" checked> Good</label>
+          <label><input type="radio" name="sleep" value="2"> Okay</label>
+          <label><input type="radio" name="sleep" value="1"> Poor</label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Energy Level</label>
+        <div class="radio-options">
+          <label><input type="radio" name="energy" value="3" checked> High</label>
+          <label><input type="radio" name="energy" value="2"> Medium</label>
+          <label><input type="radio" name="energy" value="1"> Low</label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Neck Stiffness</label>
+        <div class="radio-options">
+          <label><input type="radio" name="stiffness" value="3" checked> None</label>
+          <label><input type="radio" name="stiffness" value="2"> Mild</label>
+          <label><input type="radio" name="stiffness" value="1"> Noticeable</label>
+        </div>
+      </div>
+
+      <button id="submit-checkin" class="btn-primary">Save Check-In</button>
+      <p id="status-banner" class="status-msg"></p>
+    </section>
+
+    <!-- Settings & Quick Pause Controls Section -->
+    <section class="card">
+      <h2>Controls & Settings</h2>
+      
+      <div class="setting-item">
+        <label for="nudge-style">Nudge Presentation Style</label>
+        <select id="nudge-style">
+          <option value="character">Character Mode (Animated Element)</option>
+          <option value="minimal">Minimal Mode (Top Banner)</option>
+        </select>
+      </div>
+
+      <div class="setting-item">
+        <label>Temporary Pause</label>
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="NodSettings.setPause(1)">1 Hr</button>
+          <button class="btn-secondary" onclick="NodSettings.setPause(2)">2 Hrs</button>
+          <button class="btn-secondary" onclick="NodSettings.setPause(4)">4 Hrs</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Connect script bundle logic -->
+  <script src="app.js"></script>
+  <script>
+    // Simple interface binding layout
+    const checkinBtn = document.getElementById('submit-checkin');
+    const statusBanner = document.getElementById('status-banner');
+    const styleSelect = document.getElementById('nudge-style');
+
+    // Load initial configurations gracefully
+    window.addEventListener('DOMContentLoaded', () => {
+      const state = StateEngine.getTodayState();
+      statusBanner.innerText = `Today's current track: ${state.assignedState}`;
+      styleSelect.value = NodSettings.get().mode;
+    });
+
+    // Handle checkin form submission
+    checkinBtn.addEventListener('click', () => {
+      const sleep = parseInt(document.querySelector('input[name="sleep"]:checked').value);
+      const energy = parseInt(document.querySelector('input[name="energy"]:checked').value);
+      const stiffness = parseInt(document.querySelector('input[name="stiffness"]:checked').value);
+      
+      const updatedState = StateEngine.saveCheckIn(sleep, energy, stiffness, true);
+      statusBanner.innerText = `State locked: ${updatedState.assignedState}`;
+    });
+
+    // Update style configuration instantly on change
+    styleSelect.addEventListener('change', (e) => {
+      NodSettings.update({ mode: e.target.value });
+    });
+  </script>
+</body>
+</html>
