@@ -1,0 +1,206 @@
+/* Base Styling & Theme Accents */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #FAFAFA;
+  color: #2D3748;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  margin: 0 0 4px 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #718096;
+  margin: 0;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #E2E8F0;
+  margin: 24px 0;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #EDF2F7;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 6px 0;
+}
+
+.section-desc {
+  font-size: 0.85rem;
+  color: #A0AEC0;
+  margin: 0 0 20px 0;
+}
+
+/* Form Styles */
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.radio-options {
+  display: flex;
+  gap: 16px;
+}
+
+.radio-options label {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: #4A5568;
+  cursor: pointer;
+}
+
+/* Custom Interactive Settings Layout */
+.setting-item {
+  margin-top: 16px;
+}
+.setting-item label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #FAFAFA;
+  font-size: 0.9rem;
+}
+
+/* Button UI Actions */
+.btn-primary {
+  width: 100%;
+  background-color: #2D3748;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background: #EDF2F7;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.status-msg {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #4A5568;
+  margin: 12px 0 0 0;
+}
+
+/* ==========================================
+/* DYNAMIC PRESENTATION INTERFACES (NUDGES)[span_1](start_span)[span_1](end_span)
+/* ========================================== */
+
+.nod-minimal-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  border-bottom: 1px solid #EDF2F7;
+  padding: 14px;
+  z-index: 9999;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.nod-character-container {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 56px;
+  height: 56px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.nod-character-element {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #E0F2FE 0%, #BAE6FD 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.glow-worm-animation {
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+.nod-overlay-card {
+  position: absolute;
+  bottom: 68px;
+  right: 0;
+  width: 240px;
+  background: #FFFFFF;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #EDF2F7;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.nod-overlay-card p {
+  margin: 0 0 6px 0;
+  font-size: 0.88rem;
+}
+
+.hidden { display: none; }
