@@ -1,0 +1,22 @@
+{
+  "short_name": "NOD",
+  "name": "NOD – Movement Companion",
+  "description": "A gentle, context-aware movement companion designed to nudge users out of prolonged stillness.",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FAFAFA",
+  "display": "standalone",
+  "orientation": "portrait"
+}
